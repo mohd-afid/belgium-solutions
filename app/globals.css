@@ -5,16 +5,120 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-size: 14px;
+    -webkit-text-size-adjust: 100%;
   }
-  
+
   body {
-    @apply bg-white text-gray-900;
+    @apply bg-white text-[#555555];
+    font-family: var(--font-open-sans), 'Open Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #222222;
+    font-weight: 700;
+  }
+
+  a {
+    color: inherit;
+    transition: all 0.2s ease-in-out;
+  }
+
+  a:hover {
+    color: #ed1c24;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.be-wrap {
+  width: 100%;
+  max-width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .be-wrap {
+    max-width: 980px;
   }
 }
 
+@media only screen and (max-width: 992px) {
+  .be-wrap {
+    max-width: 740px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .be-wrap {
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes flipInX {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    opacity: 0;
+  }
+  to {
+    transform: perspective(400px);
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-flipInX {
+  animation: flipInX 0.8s ease-out forwards;
+}
+
+/* Hide scrollbar for neat carousel scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

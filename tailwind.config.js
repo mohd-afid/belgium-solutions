@@ -9,15 +9,23 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          red: '#FF3333',
+          red: '#ed1c24',
+          hover: '#c4131a',
         },
         secondary: {
-          dark: '#2C2C2C',
-          gray: '#1A1A1A',
+          dark: '#222222',
+          gray: '#3a3a3a',
+          light: '#f5f5f5',
+          border: '#dedede',
         },
+      },
+      fontFamily: {
+        sans: ['var(--font-open-sans)', 'Open Sans', 'sans-serif'],
+      },
+      maxWidth: {
+        'be-wrap': '1160px',
       },
     },
   },
   plugins: [],
 }
-

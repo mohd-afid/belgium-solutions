@@ -1,74 +1,127 @@
+'use client'
+
+import { useState } from 'react'
+import Link from 'next/link'
+
 const otherProducts = [
   {
-    id: 1,
-    name: 'Steel Pipes',
-    category: 'Infrastructure',
-    image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=400&q=80',
+    id: 'kemper',
+    title: 'KEMPER',
+    image: '/images/d4.jpg',
+    link: '/products',
   },
   {
-    id: 2,
-    name: 'Welding Equipment',
-    category: 'Tools',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=80',
+    id: 'demco',
+    title: 'DEMCO',
+    image: '/images/p4.jpg',
+    link: '/products',
   },
   {
-    id: 3,
-    name: 'Tank Systems',
-    category: 'Storage',
-    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=400&q=80',
+    id: 'grainger',
+    title: 'GRAINGER',
+    image: '/images/d20.jpg',
+    link: '/products',
   },
   {
-    id: 4,
-    name: 'Control Systems',
-    category: 'Automation',
-    image: 'https://images.unsplash.com/photo-1581091870598-e05e8bb84b09?w=400&q=80',
+    id: 'lufkin',
+    title: 'LUFKIN',
+    image: '/images/d23.jpg',
+    link: '/products',
   },
   {
-    id: 5,
-    name: 'Heavy Machinery',
-    category: 'Equipment',
-    image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=400&q=80',
-  },
-  {
-    id: 6,
-    name: 'Industrial Hoses',
-    category: 'Components',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=80',
+    id: 'kong',
+    title: 'KONG',
+    image: '/images/d8.jpg',
+    link: '/products',
   },
 ]
 
 export default function OtherProducts() {
+  const [startIndex, setStartIndex] = useState(0)
+  const itemsPerPage = 4
+
+  const handlePrev = () => {
+    setStartIndex((prev) => (prev > 0 ? prev - 1 : otherProducts.length - itemsPerPage))
+  }
+
+  const handleNext = () => {
+    setStartIndex((prev) => (prev < otherProducts.length - itemsPerPage ? prev + 1 : 0))
+  }
+
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-secondary-dark">
-          Other Products We Deal
-        </h2>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-          Comprehensive range of industrial products and solutions
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {otherProducts.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1"
-            >
-              <div className="aspect-w-16 aspect-h-9 h-48 bg-gray-200">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <span className="text-primary-red text-sm font-semibold">{product.category}</span>
-                <h3 className="text-xl font-semibold mt-2 text-secondary-dark">{product.name}</h3>
-              </div>
-            </div>
-          ))}
+    <section className="bg-white py-6">
+      <div className="be-wrap">
+        {/* Section Heading */}
+        <div className="mb-6 animate-flipInX">
+          <h3 className="text-xl md:text-2xl font-bold text-[#222222]">
+            Other Products we deal:
+          </h3>
         </div>
+
+        {/* Carousel Container */}
+        <div className="relative group">
+          <div className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-in-out gap-5"
+              style={{
+                transform: `translateX(-${startIndex * (100 / itemsPerPage + 1.25)}%)`,
+              }}
+            >
+              {otherProducts.map((item) => (
+                <div
+                  key={item.id}
+                  className="w-full sm:w-[calc(50%-10px)] md:w-[calc(33.333%-14px)] lg:w-[calc(25%-15px)] flex-shrink-0"
+                >
+                  <Link
+                    href={item.link}
+                    className="block relative bg-white border border-gray-100 rounded-sm overflow-hidden shadow-sm hover:shadow-md transition-shadow group/item h-[190px]"
+                  >
+                    <div className="w-full h-full p-4 flex items-center justify-center">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="max-h-full max-w-full object-contain filter group-hover/item:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+
+                    <div className="absolute inset-0 bg-black/70 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                      <span className="text-white text-sm font-bold uppercase tracking-wider text-center transform translate-y-2 group-hover/item:translate-y-0 transition-transform duration-300">
+                        {item.title}
+                      </span>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation Arrows */}
+          <button
+            type="button"
+            onClick={handlePrev}
+            className="absolute -left-3 md:-left-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#f0f0f0] hover:bg-[#ed1c24] hover:text-white text-[#555] flex items-center justify-center shadow-md transition-colors duration-200 z-10 focus:outline-none"
+            aria-label="Previous"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            onClick={handleNext}
+            className="absolute -right-3 md:-right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#f0f0f0] hover:bg-[#ed1c24] hover:text-white text-[#555] flex items-center justify-center shadow-md transition-colors duration-200 z-10 focus:outline-none"
+            aria-label="Next"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Separator Line */}
+        <hr className="border-t border-[#dedede] mt-10 mb-4" />
       </div>
     </section>
   )
 }
-

@@ -1,12 +1,19 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Open_Sans } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '600', '700', '800'],
+  variable: '--font-open-sans',
+})
 
 export const metadata: Metadata = {
-  title: 'Belgium Solutions - Complete Supply Chain Solution',
-  description: 'BOS has quickly established itself with a reputation as a complete Supply Chain Solution provider',
+  title: 'Belgium Oil Solutions',
+  description: 'Belgium Oil Solutions (BOS) - Complete Supply Chain Solution provider integrating each separate link in the chain.',
+  icons: {
+    icon: '/images/header_logo.png',
+  },
 }
 
 export default function RootLayout({
@@ -15,9 +22,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={openSans.variable}>
+      <body className="font-sans bg-white text-[#3a3a3a] antialiased selection:bg-[#ed1c24] selection:text-white">
+        {children}
+      </body>
     </html>
   )
 }
-
