@@ -5,6 +5,17 @@ import ScrollToTop from '@/components/ScrollToTop'
 
 const companies = [
   {
+    id: 'kuwait',
+    name: 'Belgium Oil Solutions (Kuwait)',
+    image: '/images/kuwait_logo.png',
+    address: 'Shuwaikh Industrial Area 3 road, Behind Canada Dry street, Tara Center - Block A, Bldg - 93 - Office - 08, Kuwait',
+    tel: '+965 67722844',
+    contactPerson: 'Contact: Raheem',
+    email: 'info@boskw.com',
+    website: 'www.boskwt.com',
+    webUrl: 'https://www.boskwt.com',
+  },
+  {
     id: 'ksa',
     name: 'National Oil Solutions',
     image: '/images/pic3.jpg',

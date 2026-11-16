@@ -112,20 +112,36 @@ export default function ContactUsPage() {
                   Get in Touch
                 </h5>
                 <div className="text-sm text-[#555555] leading-relaxed space-y-1">
-                  <p className="font-semibold text-[#222]">Faizal Center Building</p>
-                  <p>Abraq Khaitan, Street 70</p>
+                  <p className="font-semibold text-[#222]">Tara Center - Block A</p>
+                  <p>Bldg - 93 - Office - 08</p>
+                  <p>Behind Canada Dry street</p>
+                  <p>Shuwaikh Industrial Area 3 road</p>
                   <p>Kuwait</p>
                 </div>
               </div>
 
-              <div>
+              <div className="space-y-1.5 pt-2 border-t border-gray-200">
                 <p className="text-sm text-[#555555]">
-                  <strong className="text-[#222]">Muneer Thaha :</strong> Mobile 0065 6090 6007
+                  <strong className="text-[#222]">Raheem :</strong> Mobile{' '}
+                  <a href="tel:+96567722844" className="text-[#ed1c24] hover:underline font-medium">
+                    +965 67722844
+                  </a>
                 </p>
-                <p className="text-sm text-[#555555] mt-1">
+                <p className="text-sm text-[#555555]">
                   <strong className="text-[#222]">Email:</strong>{' '}
-                  <a href="mailto:sales@nosksa.com" className="text-[#ed1c24] hover:underline">
-                    sales@nosksa.com
+                  <a href="mailto:info@boskw.com" className="text-[#ed1c24] hover:underline">
+                    info@boskw.com
+                  </a>
+                </p>
+                <p className="text-sm text-[#555555]">
+                  <strong className="text-[#222]">Web:</strong>{' '}
+                  <a
+                    href="https://www.boskwt.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#ed1c24] hover:underline"
+                  >
+                    www.boskwt.com
                   </a>
                 </p>
               </div>
@@ -183,7 +199,7 @@ export default function ContactUsPage() {
       <section className="w-full h-80 bg-gray-200 border-t border-b border-gray-300 relative">
         <iframe
           title="Kuwait Office Location"
-          src="https://maps.google.com/maps?q=Abraq%20Khaitan,%20Kuwait&t=&z=14&ie=UTF8&iwloc=&output=embed"
+          src="https://maps.google.com/maps?q=Shuwaikh%20Industrial%20Area%203,%20Behind%20Canada%20Dry%20street,%20Kuwait&t=&z=14&ie=UTF8&iwloc=&output=embed"
           className="w-full h-full border-0 filter grayscale contrast-125"
           allowFullScreen
           loading="lazy"
