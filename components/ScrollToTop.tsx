@@ -7,18 +7,11 @@ export default function ScrollToTop() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true)
-      } else {
-        setIsVisible(false)
-      }
+      setIsVisible(window.scrollY > 300)
     }
 
     window.addEventListener('scroll', toggleVisibility)
-
-    return () => {
-      window.removeEventListener('scroll', toggleVisibility)
-    }
+    return () => window.removeEventListener('scroll', toggleVisibility)
   }, [])
 
   const scrollToTop = () => {
@@ -28,30 +21,19 @@ export default function ScrollToTop() {
     })
   }
 
+  if (!isVisible) return null
+
   return (
-    <>
-      {isVisible && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 bg-secondary-dark text-white w-12 h-12 rounded-full shadow-lg hover:bg-primary-red transition-all flex items-center justify-center z-40"
-          aria-label="Scroll to top"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M5 10l7-7m0 0l7 7m-7-7v18"
-            />
-          </svg>
-        </button>
-      )}
-    </>
+    <button
+      type="button"
+      onClick={scrollToTop}
+      id="back-to-top"
+      aria-label="Back to Top"
+      className="fixed bottom-6 right-6 z-40 w-10 h-10 rounded-sm bg-[#333333] hover:bg-[#ed1c24] text-white flex items-center justify-center shadow-lg transition-colors duration-200 focus:outline-none"
+    >
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 15l7-7 7 7" />
+      </svg>
+    </button>
   )
 }
-

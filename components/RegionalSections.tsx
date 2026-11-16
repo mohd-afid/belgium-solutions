@@ -1,53 +1,70 @@
+'use client'
+
+import Link from 'next/link'
+
 const regions = [
   {
-    id: 1,
-    name: 'Kuwait',
-    flag: '🇰🇼',
-    description: 'Our Kuwait office serves as the regional hub for the Middle East operations',
-    address: 'Kuwait City, Kuwait',
-    image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=600&q=80',
+    id: 'kuwait',
+    name: 'KUWAIT',
+    image: '/images/kuwait_logo.png',
+    width: 217,
+    height: 100,
   },
   {
-    id: 2,
-    name: 'UAE',
-    flag: '🇦🇪',
-    description: 'Strategic presence in the UAE to serve our clients across the Emirates',
-    address: 'Dubai, United Arab Emirates',
-    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&q=80',
+    id: 'ksa',
+    name: 'NATIONAL OIL SOLUTIONS KSA',
+    image: '/images/pic3.jpg',
+    width: 250,
+    height: 108,
+  },
+  {
+    id: 'usa',
+    name: 'NATIONAL OILFIELD SOLUTIONS, LLC USA',
+    image: '/images/pic1.jpg',
+    width: 250,
+    height: 108,
+  },
+  {
+    id: 'bahrain',
+    name: 'SPE BAHRAIN',
+    image: '/images/spe_logo.png',
+    width: 201,
+    height: 101,
+  },
+  {
+    id: 'uae',
+    name: 'NATIONAL OILFIELD SOLUTIONS FZE U.A.E',
+    image: '/images/pic4.jpg',
+    width: 250,
+    height: 108,
   },
 ]
 
 export default function RegionalSections() {
   return (
-    <section id="regions" className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-secondary-dark">
-          Our Regional Presence
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+    <section className="bg-white py-12 border-b border-gray-100">
+      <div className="be-wrap">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 items-start">
           {regions.map((region) => (
-            <div
+            <Link
               key={region.id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+              href="/group-companies"
+              className="flex flex-col items-center text-center group cursor-pointer"
             >
-              <div className="relative h-48 bg-gray-200">
+              <div className="h-28 w-full flex items-center justify-center p-2 mb-3">
                 <img
                   src={region.image}
                   alt={region.name}
-                  className="w-full h-full object-cover"
+                  className="max-h-20 max-w-full object-contain filter group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute top-4 right-4 text-4xl">{region.flag}</div>
               </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-2 text-secondary-dark">{region.name}</h3>
-                <p className="text-gray-600 mb-4">{region.description}</p>
-                <p className="text-primary-red font-semibold">{region.address}</p>
-              </div>
-            </div>
+              <h6 className="text-[13px] font-bold text-[#3a3a3a] uppercase tracking-wide group-hover:text-[#ed1c24] transition-colors duration-200 leading-snug">
+                {region.name}
+              </h6>
+            </Link>
           ))}
         </div>
       </div>
     </section>
   )
 }
-
